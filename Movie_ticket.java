@@ -1,48 +1,29 @@
 import java.util.Scanner;
 import java.io.*;
 
-
 // Creating Seat class
-class Seat{   
+class Seat {
     int seatNumber;
     boolean isBooked;
     Seat prev;
     Seat next;
 
-    Seat (int seatNumber){
-        this.seatNumber=seatNumber;
-        isBooked=false;
+    Seat(int seatNumber) {
+        this.seatNumber = seatNumber;
+        isBooked = false;
         prev = Null;
-        next= Null;
+        next = Null;
     }
-} 
+}
 
 public class Movie_ticket {
     Scanner sc = new Scanner(System.in);
     String Username;
     int Password;
     public int num = 0;
-    Seat head;
-    Seat tail;
-// creating Linked list for seats
-    public Movie_ticket(){
-        for(int i=o;i<=50;i++){
-            addSeat(i);
-        }
-
-    }
-    public void addSeat (int seatNumber){
-        Seat nSeat = new Seat(seatNumber);
-        if(head==null){
-            head =nSeat;
-            tail =nSeat;
-        }else{
-            tail.next= nSeat;
-            nSeat.prev=tail;
-            tail=nSeat;
-        }
-
-    }
+    public String[] movies;
+    int size = 10;
+    String m_name;
 
     public void login() {
         // check login
@@ -53,6 +34,7 @@ public class Movie_ticket {
         Password = sc.nextInt();
 
         if (Username.equals("susa") && Password == 2002) {
+            // admin part
             System.out.println("Hi Admin");
             System.out.println("1.Movie Management");
             System.out.println("2.Theater Management");
@@ -73,28 +55,39 @@ public class Movie_ticket {
             }
 
         } else {
-            System.out.println("Hi " + Username);
-<<<<<<< Updated upstream
-            //HHI
-=======
->>>>>>> Stashed changes
+            // user part
+            User ur = new User();
+            System.out.println("1.Movie Management");
+            System.out.println("2.Theater Management");
+            System.out.println("3.Seat Booking");
+            System.out.println("Enter Key Number");
+            num = sc.nextInt();
+            if (num == 1) {
+
+            } else if (num == 2) {
+
+            } else if (num == 3) {
+                ur.booking();
+
+            } else {
+                System.out.println("Please enter valid key number");
+            }
 
         }
 
     }
 
-    public String[] movies;
-    int size = 10;
-    String m_name;
-
     public void movie_mana() {
         System.out.println("1.ADD Movies");
         System.out.println("2.Delete Movies");
+        System.out.println("3.View Movies List");
         int dis = sc.nextInt();
         if (dis == 1) {
             movie_insert();
         } else if (dis == 2) {
             mo_delete();
+        } else if (dis == 3) {
+            mo_view();
         } else {
             System.out.println("Enter valid number");
         }
@@ -104,20 +97,26 @@ public class Movie_ticket {
     public void movie_insert() {// add movie
         movies = new String[size];
         movies[0] = "Movie - How to Train Your Dragon | Time - 08.30 a.m | 11.20 a.m | 1.00 p.m";
-        System.out.println("enter Movie Name");
-        m_name = sc.nextLine();
-        for (int i = 1; m_name.equals("end"); i++) {
-            movies[i++] = m_name;
-            System.out.println("enter Movie Name");
+        System.out.println("Enter Movie Name or type 'end' to stop adding movies:");
+        String m_name = sc.nextLine();
+        int i = 1;
+        while (!m_name.equals("end") && i < size) {
+            System.out.println("Enter Time for " + m_name + ":");
+            String time = sc.nextLine();
+            movies[i++] = "Movie - " + m_name + " | Time - " + time;
+            System.out.println("Enter Movie Name or type 'end' to stop adding movies:");
             m_name = sc.nextLine();
         }
         System.out.println("1.ADD Movies");
         System.out.println("2.Delete Movies");
+        System.out.println("3.View Movies List");
         int EXNb = sc.nextInt();
         if (EXNb == 1) {
             movie_insert();
         } else if (EXNb == 2) {
             mo_delete();
+        } else if (EXNb == 3) {
+            mo_view();
         } else {
             System.out.println("Enter valid number");
         }
@@ -125,6 +124,43 @@ public class Movie_ticket {
     }
 
     public void mo_delete() {
+        System.out.println("enter Movie Listing Number");
+        int mdel = sc.nextInt();
+        movies[mdel] = null;
+        System.out.println("Delete Successful");
+        System.out.println("1.ADD Movies");
+        System.out.println("2.Delete Movies");
+        System.out.println("3.View Movies List");
+        int EXNb = sc.nextInt();
+        if (EXNb == 1) {
+            movie_insert();
+        } else if (EXNb == 2) {
+            mo_delete();
+        } else if (EXNb == 3) {
+            mo_view();
+        } else {
+            System.out.println("Enter valid number");
+        }
+
+    }
+
+    public void mo_view() {
+        for (int x = 0; x < size; x++) {
+            System.out.println(x + movies[x]);
+        }
+        System.out.println("1.ADD Movies");
+        System.out.println("2.Delete Movies");
+        System.out.println("3.View Movies List");
+        int EXNb = sc.nextInt();
+        if (EXNb == 1) {
+            movie_insert();
+        } else if (EXNb == 2) {
+            mo_delete();
+        } else if (EXNb == 3) {
+            mo_view();
+        } else {
+            System.out.println("Enter valid number");
+        }
 
     }
 
@@ -133,30 +169,61 @@ public class Movie_ticket {
     }
 
     public void booking_man() {
-            System.out.println();
 
-            //Show available Seat Count
-            System.out.println("Available Seat Count: ");
-            Seat current = head;
-            while (current != Null) {
-                if (current.seatNumber == bookSeat) {
-                    if (current.isBooked==false) {
-                        current.isBooked=true;
-                        System.out.println("Seat Count" +bookSeat+ " booked Succesfully. ");
-                    
+    }
 
-                    }else{
-                        System.out.println("Seat Count" +bookSeat+ "Already Booked");
-                    }
-                    break;
-                   
+}
+
+public class User {
+    Seat head;
+    Seat tail;
+
+    // creating Linked list for seats
+    public User() {
+        for (int i = o; i <= 50; i++) {
+            addSeat(i);
+        }
+
+    }
+
+    public void addSeat(int seatNumber) {
+        Seat nSeat = new Seat(seatNumber);
+        if (head == null) {
+            head = nSeat;
+            tail = nSeat;
+        } else {
+            tail.next = nSeat;
+            nSeat.prev = tail;
+            tail = nSeat;
+        }
+
+    }
+
+    public void booking() {
+        System.out.println();
+
+        // Show available Seat Count
+        System.out.println("Available Seat Count: ");
+        Seat current = head;
+        while (current != Null) {
+            if (current.seatNumber == bookSeat) {
+                if (current.isBooked == false) {
+                    current.isBooked = true;
+                    System.out.println("Seat Count" + bookSeat + " booked Succesfully. ");
+
+                } else {
+                    System.out.println("Seat Count" + bookSeat + "Already Booked");
                 }
-                current=current.next;
+                break;
 
-            }   
-            if(current==Null){
-                System.out.println("invalid Seat Count");
             }
+            current = current.next;
+
+        }
+        if (current == Null) {
+            System.out.println("invalid Seat Count");
+        }
+
     }
 
 }
