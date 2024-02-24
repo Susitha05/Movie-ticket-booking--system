@@ -74,14 +74,16 @@ public class Movie_ticket {
 
         } else {
             System.out.println("Hi " + Username);
-            
+            //HHI
 
         }
 
     }
+    Public String [] movies;
+    int size =10;
 
     public void movie_mana() {
-        System.out.println("hello");
+        movies = new string[size] ={"Movie - How to train your dragon| Time - 08.30 a.m|11.20 a.m|1.00 p.m"};
     }
 
     public void theater_man() {
