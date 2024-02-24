@@ -83,8 +83,9 @@ public class Movie_ticket {
 
     }
     public void movie_mana() {
-        movies = new String[size] ={"Movie - How to train your dragon| Time - 08.30 a.m|11.20 a.m|1.00 p.m"};
-    }
+        movies = new String[size];
+        movies [0]="Movie - How to train your dragon| Time - 08.30 a.m|11.20 a.m|1.00 p.m";
+    } 
 
     public void theater_man() {
 
@@ -101,7 +102,7 @@ public class Movie_ticket {
                 if (current.seatNumber == bookSeat) {
                     if (current.isBooked==false) {
                         current.isBooked=true;
-                        System.out.println("Seat Count" + bookSeat + " booked Succesfully. ");
+                        System.out.println("Seat Count " + bookSeat + " booked Succesfully. ");
                     
 
                     }else{
