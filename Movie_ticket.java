@@ -74,16 +74,58 @@ public class Movie_ticket {
 
         } else {
             System.out.println("Hi " + Username);
+<<<<<<< Updated upstream
             //HHI
+=======
+>>>>>>> Stashed changes
 
         }
 
     }
-    Public String [] movies;
-    int size =10;
+
+    public String[] movies;
+    int size = 10;
+    String m_name;
 
     public void movie_mana() {
-        movies = new string[size] ={"Movie - How to train your dragon| Time - 08.30 a.m|11.20 a.m|1.00 p.m"};
+        System.out.println("1.ADD Movies");
+        System.out.println("2.Delete Movies");
+        int dis = sc.nextInt();
+        if (dis == 1) {
+            movie_insert();
+        } else if (dis == 2) {
+            mo_delete();
+        } else {
+            System.out.println("Enter valid number");
+        }
+
+    }
+
+    public void movie_insert() {// add movie
+        movies = new String[size];
+        movies[0] = "Movie - How to Train Your Dragon | Time - 08.30 a.m | 11.20 a.m | 1.00 p.m";
+        System.out.println("enter Movie Name");
+        m_name = sc.nextLine();
+        for (int i = 1; m_name.equals("end"); i++) {
+            movies[i++] = m_name;
+            System.out.println("enter Movie Name");
+            m_name = sc.nextLine();
+        }
+        System.out.println("1.ADD Movies");
+        System.out.println("2.Delete Movies");
+        int EXNb = sc.nextInt();
+        if (EXNb == 1) {
+            movie_insert();
+        } else if (EXNb == 2) {
+            mo_delete();
+        } else {
+            System.out.println("Enter valid number");
+        }
+
+    }
+
+    public void mo_delete() {
+
     }
 
     public void theater_man() {
