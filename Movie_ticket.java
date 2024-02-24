@@ -12,8 +12,8 @@ class Seat{
     Seat (int seatNumber){
         this.seatNumber=seatNumber;
         isBooked=false;
-        prev = Null;
-        next= Null;
+        prev = null;
+        next= null;
     }
 } 
 
@@ -24,9 +24,12 @@ public class Movie_ticket {
     public int num = 0;
     Seat head;
     Seat tail;
+    public String[] movies;
+    int size =10;
+    
 // creating Linked list for seats
     public Movie_ticket(){
-        for(int i=o;i<=50;i++){
+        for(int i=1;i<=50;i++){
             addSeat(i);
         }
 
@@ -79,11 +82,8 @@ public class Movie_ticket {
         }
 
     }
-    Public String [] movies;
-    int size =10;
-
     public void movie_mana() {
-        movies = new string[size] ={"Movie - How to train your dragon| Time - 08.30 a.m|11.20 a.m|1.00 p.m"};
+        movies = new String[size] ={"Movie - How to train your dragon| Time - 08.30 a.m|11.20 a.m|1.00 p.m"};
     }
 
     public void theater_man() {
@@ -96,23 +96,23 @@ public class Movie_ticket {
             //Show available Seat Count
             System.out.println("Available Seat Count: ");
             Seat current = head;
-            while (current != Null) {
+            int bookSeat =sc.nextInt();
+            while (current != null) {
                 if (current.seatNumber == bookSeat) {
                     if (current.isBooked==false) {
                         current.isBooked=true;
-                        System.out.println("Seat Count" +bookSeat+ " booked Succesfully. ");
+                        System.out.println("Seat Count" + bookSeat + " booked Succesfully. ");
                     
 
                     }else{
-                        System.out.println("Seat Count" +bookSeat+ "Already Booked");
+                        System.out.println("Seat Count" + bookSeat + "Already Booked");
                     }
-                    break;
-                   
+                    break;                                
                 }
                 current=current.next;
 
             }   
-            if(current==Null){
+            if(current==null){
                 System.out.println("invalid Seat Count");
             }
     }
