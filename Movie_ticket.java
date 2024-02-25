@@ -56,12 +56,13 @@ public class Movie_ticket {
 
         } else {
             // user part
-            User ur = new User();
             System.out.println("1.Movie Management");
             System.out.println("2.Theater Management");
             System.out.println("3.Seat Booking");
             System.out.println("Enter Key Number");
             num = sc.nextInt();
+            User ur = new User();
+
             if (num == 1) {
 
             } else if (num == 2) {
@@ -175,6 +176,7 @@ public class Movie_ticket {
 }
 
 public class User {
+    // user oerations
     Seat head;
     Seat tail;
 
