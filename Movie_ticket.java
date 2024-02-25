@@ -7,12 +7,16 @@ class Seat {
     boolean isBooked;
     Seat prev;
     Seat next;
+    public Seat()
+    {
 
-    Seat(int seatNumber) {
+    }
+
+     public Seat(int seatNumber) {
         this.seatNumber = seatNumber;
         isBooked = false;
-        prev = Null;
-        next = Null;
+        prev = null;
+        next = null;
     }
 }
 
@@ -147,7 +151,7 @@ public class Movie_ticket {
 
     public void mo_view() {
         for (int x = 0; x < size; x++) {
-            System.out.println(x + movies[x]);
+            System.out.println(x + ". " + movies[x]);
         }
         System.out.println("1.ADD Movies");
         System.out.println("2.Delete Movies");
@@ -175,20 +179,20 @@ public class Movie_ticket {
 
 }
 
-public class User {
+ class User extends Seat{
     // user oerations
     Seat head;
     Seat tail;
 
     // creating Linked list for seats
     public User() {
-        for (int i = o; i <= 50; i++) {
+        for (int i = 0; i <= 50; i++) {
             addSeat(i);
         }
 
     }
 
-    public void addSeat(int seatNumber) {
+    public int addSeat(int seatNumber) {
         Seat nSeat = new Seat(seatNumber);
         if (head == null) {
             head = nSeat;
@@ -198,16 +202,17 @@ public class User {
             nSeat.prev = tail;
             tail = nSeat;
         }
+        return seatNumber;
 
     }
 
     public void booking() {
-        System.out.println();
 
         // Show available Seat Count
         System.out.println("Available Seat Count: ");
         Seat current = head;
-        while (current != Null) {
+        int bookSeat = addSeat(seatNumber);;
+        while (current != null) {
             if (current.seatNumber == bookSeat) {
                 if (current.isBooked == false) {
                     current.isBooked = true;
@@ -222,7 +227,7 @@ public class User {
             current = current.next;
 
         }
-        if (current == Null) {
+        if (current == null) {
             System.out.println("invalid Seat Count");
         }
 
