@@ -229,6 +229,7 @@ public class Movie_ticket {
         }
         if (current == null) {
             System.out.println("invalid Seat Count");
+            //try
         }
 
     }
