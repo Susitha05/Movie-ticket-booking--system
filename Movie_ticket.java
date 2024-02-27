@@ -61,26 +61,11 @@ public class Movie_ticket {
 
         } else {
             // user part
-            System.out.println("1.Movie Management");
-            System.out.println("2.Theater Management");
-            System.out.println("3.Seat Booking");
-            System.out.println("Enter Key Number");
-            num = sc.nextInt();
             User ur = new User();
-
-            if (num == 1) {
-
-            } else if (num == 2) {
-
-            } else if (num == 3) {
-                System.out.println("how many Seats are you need ");
-                int seat_num = sc.nextInt();
-                Seat seat = new Seat(seat_num);
-                ur.booking(seat.seatNumber);
-
-            } else {
-                System.out.println("Please enter valid key number");
-            }
+            System.out.println("how many Seats are you need ");
+            int seat_num = sc.nextInt();
+            Seat seat = new Seat(seat_num);
+            ur.booking(seat.seatNumber);
 
         }
 
@@ -174,13 +159,11 @@ public class Movie_ticket {
     }
 }
 
-class theater
-{
+class theater {
 
 }
 
-class booking
-{
+class booking {
 
 }
 
