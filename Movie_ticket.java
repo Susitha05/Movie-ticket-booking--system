@@ -166,6 +166,68 @@ class theater {
 class booking {
 
 }
+class Map {
+
+    // check wether node has been visited
+    public void dijkstra(int graph[][], int src){
+        int dist [] = new int[4];
+        Boolean b[] = new Boolean[4];
+        for(int i = 0; i<4; i++)
+        {
+            dist[i] = Integer.MAX_VALUE;
+            b[i] = false;
+        }
+        dist[0]=0;
+
+        for (int count=0; count < 4; count++ ){
+            int u = minDistance(dist,b);
+            b[u] = true;
+            for (int x=0;x<4;x++){
+                if (!b[x]&& graph[u][x]!=0 && dist[u]!= Integer.MAX_VALUE && dist[u]+graph[u][x]< dist[x]){
+                    dist[x] = dist[u]+ graph[u][x];
+                }
+            }
+            printGraph(dist, 4);
+
+        }
+
+
+    }
+
+    public int minDistance(int dist[],Boolean b[]){
+        
+        int min = Integer.MIN_VALUE, index = 0;
+        for(int x = 0;x<4;x++)
+        {
+            if (b[x]== false && dist[x] <= min){
+                min = dist[x];
+                index = x;
+
+            }
+            
+        } 
+       
+        return index;
+
+    }
+
+    public int[][] locations(){
+        int graph[][] = new int[][] {{0,3,5,4},{2,3,0,5},{0,4,5,7},{0,3,5,2}};
+        return graph;
+    }
+
+    public void printGraph(int dist[], int x){
+        System.out.println("Distance from source to location is");
+
+        for (int i =0; i<4; i++){
+            System.out.println(i+ "-----"+dist[i]);
+        }
+        
+
+    }
+
+
+}
 
 class User {
     Seat head;
@@ -211,6 +273,10 @@ class Main {
     public static void main(String[] args) {
         Movie_ticket mt = new Movie_ticket();
         mt.login();
+
+        Map m = new Map();
+        int[][] graph = m.locations();
+        m.dijkstra(graph, 0);
 
     }
 }
